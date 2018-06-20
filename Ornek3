@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    
+    public class Program{
+        
+        public static void karekok(int a){ // soruda verilan yaklaşım fonksiyonuna göre 5.dereceden hassasiyetli karekok bulmamıza yarayan fonksiyon.
+           float x0 = (float)(1 + a/1)/2; // x0 durumu icin 1 kabul edildi.
+           float x1 = (float)(x0 + a/x0)/2;
+           float x2 = (float)(x1 + a/x1)/2;
+           float x3 = (float)(x2 + a/x2)/2;
+           float x4 = (float)(x3 + a/x3)/2;
+            
+           Console.Write("1. dereceden Karekok ="+ x0);
+           Console.WriteLine();
+           Console.Write("2. dereceden Karekok ="+ x1);
+           Console.WriteLine();
+           Console.Write("3. dereceden Karekok ="+ x2);
+           Console.WriteLine();
+           Console.Write("4. dereceden Karekok ="+ x3);
+           Console.WriteLine();
+           Console.Write("5. dereceden Karekok ="+ x4);
+        }    
+        public static void Main(string[] args){
+         /*
+           int a = Convert.ToInt16(Console.ReadLine());   // konsoldan girdi alindigi zaman.
+           karekok(a); */
+           
+           karekok(4);
+        }    
+   }
+}
