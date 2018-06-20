@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    
+    public class Program{
+        
+        public class Nokta{ // Koordinat sistemindeki noktaların x ve y'sini tanımlayacağımız class.
+            
+            public int x;
+            public int y;
+            public Nokta(int x,int y){ // nesneyi oluştururken direk x ve y koordinatı almamızı sağlayan oluşturucu(constructor)
+                this.x = x;
+                this.y = y;
+            } 
+        }
+         static bool NoktaUcgeninIcindeMi (Nokta aranan, Nokta n1, Nokta n2, Nokta n3){ // Aradigimiz noktanin ücgenin icinde olup olmadigini kontrol eden bool fonksiyonıu
+            bool b1, b2, b3;
+
+            b1 = isaret(aranan, n1, n2) < 0.0f;
+            b2 = isaret(aranan, n2, n3) < 0.0f;
+            b3 = isaret(aranan, n3, n1) < 0.0f;
+
+             if((b1 == b2) && (b2 == b3)){
+                 Console.Write("Nokta ucgenin icinde");
+                 return true;
+             }
+             else{
+                 Console.Write("Nokta ucgenin disinda");
+                 return false;
+             }
+         }   
+        
+         static float isaret (Nokta n1, Nokta n2, Nokta n3){ // Noktanin ücgenin icinde olup olmadigini bulmamizda yardimci olan algoritma.
+            return (n1.x - n3.x) * (n2.y - n3.y) - (n2.x - n3.x) * (n1.y - n3.y);
+            
+         }
+         public static void Main(string[] args){
+            
+            Nokta n1 = new Nokta(10,10); // istenilen degerler
+            Nokta n2 = new Nokta(30,20);
+            Nokta n3 = new Nokta(20,40);
+            Nokta n4 = new Nokta(20,30);
+           
+            NoktaUcgeninIcindeMi(n4,n1,n2,n3);
+        }    
+   }
+}
